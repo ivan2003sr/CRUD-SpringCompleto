@@ -37,4 +37,19 @@ public class ClienteDAOclase implements ClienteDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Override
+	@Transactional
+	public void insertarCliente(Cliente elCliente) {
+		// TODO Auto-generated method stub
+		
+		// Obtener la sesión
+		
+				Session miSession=sessionFactory.getCurrentSession();
+		
+		//Insertar por fin el cliente
+				
+				miSession.save(elCliente);
+		
+	}
+
 }

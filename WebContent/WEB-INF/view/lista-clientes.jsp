@@ -14,10 +14,10 @@
 </head>
 <body>
 
-Hemos llegado a la lista de futuros clientes!!!
+<h1>Lista de clientes</h1>
 
 
-<table>
+<table border="1">
 
 	<tr>
 	 		<th>Nombre</th>
@@ -41,6 +41,11 @@ Hemos llegado a la lista de futuros clientes!!!
 
 </c:forEach>
 </table>
+
+<br/>
+
+<input type="button" value="Agregar Cliente" onClick="window.location.href='muestraFormularioAgregar'; return false"/>
+
 
 </body>
 </html>
