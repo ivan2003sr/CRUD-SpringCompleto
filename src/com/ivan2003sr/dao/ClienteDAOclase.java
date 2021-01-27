@@ -52,4 +52,19 @@ public class ClienteDAOclase implements ClienteDAO {
 		
 	}
 
+	@Override
+	@Transactional
+	public Cliente getCliente(int id) {
+
+		//Obtener la sesion
+		
+		Session miSession=sessionFactory.getCurrentSession();
+		
+		//Obtener la información del cliente seleccionado
+		
+		Cliente elCliente = miSession.get(Cliente.class,id);
+		
+		return elCliente;
+	}
+
 }

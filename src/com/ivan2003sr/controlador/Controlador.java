@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ivan2003sr.controlador.entity.Cliente;
 import com.ivan2003sr.dao.ClienteDAO;
@@ -50,6 +52,26 @@ public class Controlador {
 		
 	return"redirect:/cliente/lista";
 	}
+	
+	@GetMapping("/muestraFormularioActualizar")
+	public String muestraFormularioActualizar(@RequestParam("clienteId") int Id, Model elModelo) {
+		
+		//Obtener el cliente cuyo id le estamos pasando por parámetro
+		
+		Cliente elCliente=clienteDAO.getCliente(Id);
+		
+		//Establecer el cliente como atributo del modelo
+		
+		elModelo.addAttribute("cliente",elCliente);
+		
+		
+		// Enviar al formulario
+		
+		
+		
+		return "formularioCliente";
+	}
+	
 	
 	@Autowired //Permite usar inyección de dependencias de tipo ClienteDAO
 	private ClienteDAO clienteDAO;
