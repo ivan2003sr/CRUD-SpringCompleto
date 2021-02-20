@@ -72,6 +72,21 @@ public class Controlador {
 		return "formularioCliente";
 	}
 	
+	@GetMapping("/eliminar")
+	public String eliminarCliente(@RequestParam("clienteId") int Id) {
+		
+		//Eliminar el cliente cuyo id le estamos pasando por parámetro
+		
+		clienteDAO.eliminarCliente(Id);
+		
+		//Redireccionar a la lista de clientes
+		
+		
+		
+		return"redirect:/cliente/lista";
+	}
+	
+	
 	
 	@Autowired //Permite usar inyección de dependencias de tipo ClienteDAO
 	private ClienteDAO clienteDAO;
