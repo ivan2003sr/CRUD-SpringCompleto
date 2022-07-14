@@ -14,7 +14,7 @@
 <body>
 
 	<form:form action="insertarCliente" modelAttribute="cliente" method="POST">
-	
+	<form:hidden path="id"/>
 	<table>
 	
 	<tr>
@@ -37,7 +37,7 @@
 	
 	<tr>
 	
-	<td colspan="2"><input type="submit" value="Insertar"></td>
+	<td colspan="2"><input type="submit" value="Actualizar o Insertar"></td>
 	
 	</tr>
 	

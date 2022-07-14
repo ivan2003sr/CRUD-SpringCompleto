@@ -15,11 +15,11 @@ import com.ivan2003sr.controlador.entity.Cliente;
 public class ClienteDAOclase implements ClienteDAO {
 
 	@Override
-	@Transactional	//comienzo transaccion, begin, commit, rollback, etc. con esta anotación no hace falta
+	@Transactional	//comienzo transaccion, begin, commit, rollback, etc. con esta anotaciï¿½n no hace falta
 	public List<Cliente> getClientes() {
 		// TODO Auto-generated method stub
 	
-		// Obtener la sesión
+		// Obtener la sesiï¿½n
 		
 		Session miSession=sessionFactory.getCurrentSession();
 		
@@ -42,14 +42,45 @@ public class ClienteDAOclase implements ClienteDAO {
 	public void insertarCliente(Cliente elCliente) {
 		// TODO Auto-generated method stub
 		
-		// Obtener la sesión
+		// Obtener la sesiï¿½n
 		
 				Session miSession=sessionFactory.getCurrentSession();
 		
 		//Insertar por fin el cliente
 				
-				miSession.save(elCliente);
+				//miSession.save(elCliente);
+				miSession.saveOrUpdate(elCliente);
 		
+	}
+
+	@Override
+	@Transactional
+	public Cliente getCliente(int id) {
+		
+		//Obtener la sesiÃ³n
+		Session miSession=sessionFactory.getCurrentSession();
+		
+		//Obtener la info del cliente
+		
+		Cliente elCliente = miSession.get(Cliente.class,id);
+		
+		return elCliente;
+	}
+
+	@Override
+	@Transactional
+	public void eliminarCliente(int id) {
+		
+		//Obtener la sesiÃ³n
+		Session miSession=sessionFactory.getCurrentSession();
+				
+				//Borrar el cliente de la base de dato
+				
+		Query consulta = miSession.createQuery("delete from Cliente where id=:IdDelCliente");
+		
+		consulta.setParameter("IdDelCliente", id);
+		consulta.executeUpdate();
+			
 	}
 
 }
